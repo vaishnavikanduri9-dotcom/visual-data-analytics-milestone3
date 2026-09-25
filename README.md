@@ -10,7 +10,7 @@
 AI-POWERED-VISUAL-DATA-ANALYTICS-AND-BUSINESS-INTELLIGENCE/
 │
 ├── data/
-│   └── safety_manual.pdf          ← Place your PDF here
+│   └── safety_manual.pdf          ← Workplace safety manual used for document processing
 │
 ├── src/
 │   ├── documents/
@@ -24,14 +24,13 @@ AI-POWERED-VISUAL-DATA-ANALYTICS-AND-BUSINESS-INTELLIGENCE/
 │       ├── __init__.py
 │       └── database.py            ← ChromaDB vector knowledge base
 │
-├── best.pt                        ← Fine-tuned PPE YOLO model (you provide)
-├── yolov8n.pt                     ← YOLOv8 nano (auto-downloaded)
-│
+├── best.pt                        ← Fine-tuned PPE YOLO model
+|
 ├── ppe_model.py                   ← PPE detection wrapper
 ├── vision.py                      ← Real-time vision pipeline
 ├── yolo_model.py                  ← General YOLO detection wrapper
 │
-├── milestone3_practice.py         ← ✅ Main entry point — run this!
+├── milestone3_practice.py         ← Main script for the PDF processing workflow
 ├── requirements.txt
 └── README.md
 ```
@@ -53,10 +52,10 @@ pip install -r requirements.txt
 ```
 
 ### 3. Add required files
-| File | Where to get it |
+| File | Description |
 |---|---|
-| `data/safety_manual.pdf` | Provided by your instructor |
-| `best.pt` | Your trained PPE model weights |
+| `data/safety_manual.pdf` |Workplace safety manual used for PDF document processing |
+| `best.pt` | PPE detection model weights used for inference |
 | `yolov8n.pt` | Auto-downloaded on first run |
 
 ---
@@ -114,23 +113,20 @@ KnowledgeBase   →  embeddings stored in ChromaDB
       ▼
 kb.search(query) →  relevant chunks  →  LLM answer
 ```
-
 ---
-
 ## 📦 Module Reference
 
-| Module | Class | Key Method |
-|---|---|---|
-| `document_loader.py` | `DocumentLoader` | `.load(path)` |
-| `text_cleaner.py` | `TextCleaner` | `.clean(text)` |
-| `chunker.py` | `Chunker` | `.split(text)` |
-| `metadata.py` | `MetadataExtractor` | `.extract(path, text)` |
-| `database.py` | `KnowledgeBase` | `.add_chunks()` / `.search()` |
-| `yolo_model.py` | `YOLODetector` | `.detect(source)` |
-| `ppe_model.py` | `PPEDetector` | `.detect(source)` |
-| `vision.py` | `VisionPipeline` | `.run_webcam()` / `.run_image()` |
-
----
+| Module | Purpose |
+|---|---|
+| `document_loader.py` | Loads the safety manual PDF and extracts text |
+| `text_cleaner.py` | Cleans and normalizes extracted text |
+| `chunker.py` | Splits document text into chunks |
+| `metadata.py` | Extracts file metadata and text statistics |
+| `database.py` | Stores document chunks in the ChromaDB knowledge base and supports search |
+| `milestone3_practice.py` | Runs the complete PDF processing and knowledge-base workflow |
+| `yolo_model.py` | Performs YOLO object detection |
+| `ppe_model.py` | Performs PPE detection |
+| `vision.py` | Handles image/video/webcam vision processing |
 
 ## ❓ Troubleshooting
 
