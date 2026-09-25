@@ -56,7 +56,7 @@ pip install -r requirements.txt
 |---|---|
 | `data/safety_manual.pdf` |Workplace safety manual used for PDF document processing |
 | `best.pt` | PPE detection model weights used for inference |
-| `yolov8n.pt` | Auto-downloaded on first run |
+
 
 ---
 
